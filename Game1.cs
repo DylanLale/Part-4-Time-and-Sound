@@ -9,6 +9,9 @@ namespace Part_4__Time_and_Sound
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Texture2D bombTexture;
+        Rectangle bombRect;
+        SpriteFont timeFont;
+        SpriteFont titleFont;
 
         public Game1()
         {
@@ -22,11 +25,14 @@ namespace Part_4__Time_and_Sound
             // TODO: Add your initialization logic here
             _graphics.PreferredBackBufferWidth = 800;
             _graphics.PreferredBackBufferHeight = 500;
+            bombRect = new Rectangle(50, 50, 400, 700);
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
+            titleFont = Content.Load<SpriteFont>("time");
+            bombTexture = Content.Load<Texture2D>("bomb");
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
@@ -44,6 +50,7 @@ namespace Part_4__Time_and_Sound
 
         protected override void Draw(GameTime gameTime)
         {
+            _spriteBatch.DrawString(timeFont, "1:00", new Vector2(270, 200), Color.Black);
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
