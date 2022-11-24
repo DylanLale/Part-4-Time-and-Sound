@@ -35,7 +35,7 @@ namespace Part_4__Time_and_Sound
             _graphics.PreferredBackBufferWidth = 800;
             _graphics.PreferredBackBufferHeight = 500;
             bombRect = new Rectangle(50, 50, 700, 400);
-            boomRect = new Rectangle(50, 50, 700, 600);
+            boomRect = new Rectangle(50, -50, 800, 800);
             startTime = 0;
             exploded = false;
             _graphics.ApplyChanges();
@@ -63,14 +63,16 @@ namespace Part_4__Time_and_Sound
 
             if (mouseState.LeftButton == ButtonState.Pressed)
                 startTime = (float)gameTime.TotalGameTime.TotalSeconds;
-           
-           
-            if (seconds >= 10 || )
+
+
+            if (seconds >= 10 && !exploded)
             {
                 explode.Play();
                 exploded = true;
             }
-            
+            if (seconds > 15)
+                Exit();
+
 
             // TODO: Add your update logic here
 
