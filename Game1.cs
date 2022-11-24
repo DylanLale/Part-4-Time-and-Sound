@@ -10,6 +10,7 @@ namespace Part_4__Time_and_Sound
     {
         float seconds;
         float startTime;
+        bool exploded;
         MouseState mouseState;
         SoundEffect explode;
         private GraphicsDeviceManager _graphics;
@@ -36,6 +37,7 @@ namespace Part_4__Time_and_Sound
             bombRect = new Rectangle(50, 50, 700, 400);
             boomRect = new Rectangle(50, 50, 700, 600);
             startTime = 0;
+            exploded = false;
             _graphics.ApplyChanges();
             base.Initialize();
         }
@@ -63,10 +65,10 @@ namespace Part_4__Time_and_Sound
                 startTime = (float)gameTime.TotalGameTime.TotalSeconds;
            
            
-            if (seconds >= 10)
+            if (seconds >= 10 || )
             {
                 explode.Play();
-                startTime = (float)gameTime.TotalGameTime.TotalSeconds;
+                exploded = true;
             }
             
 
@@ -85,6 +87,7 @@ namespace Part_4__Time_and_Sound
             if (seconds >= 10)
                 _spriteBatch.Draw(boomTexture, boomRect, Color.White);
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            
             
 
             _spriteBatch.End();
